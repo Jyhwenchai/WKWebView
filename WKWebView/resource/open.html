@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>js & webView interaction</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <style>
+            body {text-align: center;}
+            .container {width: 100%; height: 100%;}
+            .container > a {
+                display: block;
+                padding: 10px 0px;
+                width: 100px;
+                margin: 0 auto;
+                margin-top: 50px;
+                background-color: orange;
+                border-radius: 10px;
+                color: white;
+                font-size: 20px;
+            }
+            p {
+                margin-top: 30px;
+                text-align: center;
+                color: red;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <a onclick="closeAction()"> close page </a>
+            <p>这是通过 open 打开的页面</p>
+        </div>
+        
+        <script type="text/javascript">
+
+             function closeAction() {
+                 window.close();
+             }
+        
+        </script>
+    </body>
+</html>

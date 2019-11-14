@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>js & webView interaction</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <style>
+            body {text-align: center;}
+            .container {width: 100%; height: 100%;}
+            .container > a {
+                display: block;
+                padding: 10px 0px;
+                width: 100px;
+                margin: 0 auto;
+                margin-top: 50px;
+                background-color: orange;
+                border-radius: 10px;
+                color: white;
+                font-size: 20px;
+            }
+            p {
+                margin-top: 30px;
+                text-align: center;
+                color: red;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <a onclick="alertAction(alertCallback)"> alert </a>
+            
+            <a onclick="confirmAction()"> confirm </a>
+            
+            <a onclick="inputAction(inputCallback)"> input </a>
+            
+            <a onclick="openAction()"> open new page </a>
+            
+            <p></p>
+        </div>
+        
+        <script type="text/javascript">
+            // JS call iOS webView
+             function alertAction(callback) {
+                alert("javaScript call alert()");
+                callback();
+             }
+            
+            function confirmAction() {
+                confirm("javaScript call confirm()");
+            }
+        
+            function inputAction(callback) {
+                let name = prompt("please input your name", "czw");
+                callback(name)
+            }
+        
+            function openAction() {
+                window.open("./open.html");
+            }
+        
+        
+            // callback
+            function alertCallback() {
+                var e = document.getElementsByTagName("p")[0]
+                e.innerHTML = "alert 回调执行";
+            }
+        
+            function inputCallback(name) {
+                var e = document.getElementsByTagName("p")[0]
+                e.innerHTML = "input 回调执行, 输入的文本为：" + name;
+            }
+        
+            function changeElementColorAndText(message) {
+                var targetElement = document.getElementsByClassName("container")[0];
+                var newElement = document.createElement("p");
+                newElement.className = "newElement";
+                newElement.innerHTML = message
+                newElement.style.color = "red";
+                newElement.style.marginTop = "50px";
+                targetElement.appendChild(newElement);
+                return "iOS webView 调用 javaScript 方法完成。";
+            }
+        
+        </script>
+    </body>
+</html>
