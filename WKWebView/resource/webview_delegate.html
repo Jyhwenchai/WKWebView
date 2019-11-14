@@ -70,18 +70,7 @@
                 var e = document.getElementsByTagName("p")[0]
                 e.innerHTML = "input 回调执行, 输入的文本为：" + name;
             }
-        
-            function changeElementColorAndText(message) {
-                var targetElement = document.getElementsByClassName("container")[0];
-                var newElement = document.createElement("p");
-                newElement.className = "newElement";
-                newElement.innerHTML = message
-                newElement.style.color = "red";
-                newElement.style.marginTop = "50px";
-                targetElement.appendChild(newElement);
-                return "iOS webView 调用 javaScript 方法完成。";
-            }
-        
+
         </script>
     </body>
 </html>
