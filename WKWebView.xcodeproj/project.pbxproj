@@ -11,6 +11,7 @@
 		66DA7C49237D01BE000547C8 /* webview_delegate.html in Resources */ = {isa = PBXBuildFile; fileRef = 66DA7C48237D01BE000547C8 /* webview_delegate.html */; };
 		66DA7C4B237D3728000547C8 /* open.html in Resources */ = {isa = PBXBuildFile; fileRef = 66DA7C4A237D3728000547C8 /* open.html */; };
 		66DA7C4E237D4C9D000547C8 /* NavigationDelegateWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA7C4D237D4C9D000547C8 /* NavigationDelegateWebViewController.swift */; };
+		66DA7C50237E4081000547C8 /* WeakScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA7C4F237E4081000547C8 /* WeakScriptMessageHandler.swift */; };
 		66DD1713237A938400F0EC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DD1712237A938400F0EC7F /* AppDelegate.swift */; };
 		66DD1715237A938400F0EC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DD1714237A938400F0EC7F /* SceneDelegate.swift */; };
 		66DD1717237A938500F0EC7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DD1716237A938500F0EC7F /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		66DA7C48237D01BE000547C8 /* webview_delegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = webview_delegate.html; sourceTree = "<group>"; };
 		66DA7C4A237D3728000547C8 /* open.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = open.html; sourceTree = "<group>"; };
 		66DA7C4D237D4C9D000547C8 /* NavigationDelegateWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegateWebViewController.swift; sourceTree = "<group>"; };
+		66DA7C4F237E4081000547C8 /* WeakScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakScriptMessageHandler.swift; sourceTree = "<group>"; };
 		66DD170F237A938400F0EC7F /* WKWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66DD1712237A938400F0EC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66DD1714237A938400F0EC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				66DD175A237BDE4900F0EC7F /* JSInteractionWebViewController.swift */,
 				66DD175C237BF35700F0EC7F /* MessageModel.swift */,
+				66DA7C4F237E4081000547C8 /* WeakScriptMessageHandler.swift */,
 			);
 			path = "JS交互";
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				66DD1713237A938400F0EC7F /* AppDelegate.swift in Sources */,
 				66DD1715237A938400F0EC7F /* SceneDelegate.swift in Sources */,
 				66DD1730237AA8C300F0EC7F /* ProgressView.swift in Sources */,
+				66DA7C50237E4081000547C8 /* WeakScriptMessageHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,6 @@
 import UIKit
 import WebKit
 
-private let iosInteractionMainKey = "ios_interaction_main"
-private let iosInteractionFuncKey = "ios_interaction_func"
-
 class UIDelegateWebViewController: UIViewController {
 
     private let fileName = "/webview_delegate.html"

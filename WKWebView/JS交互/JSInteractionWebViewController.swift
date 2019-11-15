@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 
 private let iosInteractionMainKey = "ios_interaction_main"
-private let iosInteractionFuncKey = "ios_interaction_func"
 
 class JSInteractionWebViewController: UIViewController {
 
@@ -50,8 +49,8 @@ class JSInteractionWebViewController: UIViewController {
     func updateConfigure() {
         let configuration = webView.configuration
         let contentController = configuration.userContentController
-        contentController.add(self, name: iosInteractionMainKey)
-        configuration.userContentController = contentController
+        /// `contentController` 会强引用 `WKScriptMessageHandler`，所以这里使用 `WeakScriptMessageHandler` 临时对象避免强引用，如果不处理会导致内存泄露
+        contentController.add(WeakScriptMessageHandler(self), name: iosInteractionMainKey)
     }
     
     func addObserver() {
@@ -84,8 +83,10 @@ class JSInteractionWebViewController: UIViewController {
     }
     
     deinit {
+        print("deinit")
         self.progressObservation?.invalidate()
         self.titleObservation?.invalidate()
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: iosInteractionMainKey)
     }
 }
 
