@@ -70,7 +70,10 @@ extension NavigationDelegateWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         print(#function)
         guard let url = navigationAction.request.url?.absoluteString else { return }
-        if url.hasPrefix("https") || url.hasPrefix("file") {
+        if url.hasPrefix("tel:") {
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+            decisionHandler(.cancel)
+        } else if url.hasPrefix("https") || url.hasPrefix("file") || url.hasPrefix("http") {
             decisionHandler(.allow)
         } else {
             decisionHandler(.cancel)
@@ -80,15 +83,24 @@ extension NavigationDelegateWebViewController: WKNavigationDelegate {
     /// 请求导航一个地址时，决定是否允许（顺序： 1）, （iOS13 新增， 如果使用该方法那么前面一个方法将失效）
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
         print(#function)
+        guard let url = navigationAction.request.url?.absoluteString else { return }
         let preference = WKWebpagePreferences()
-        decisionHandler(.allow, preference)
+        if url.hasPrefix("tel:") {
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+            decisionHandler(.cancel, preference)
+        } else if url.hasPrefix("https") || url.hasPrefix("file") || url.hasPrefix("http") {
+            decisionHandler(.allow, preference)
+        } else {
+            decisionHandler(.cancel, preference)
+        }
+        
     }
     
     /// 请求导航允许后是否允许继续响应还是取消导航请求，如果拒绝则不会加载页面内容并取消导航（顺序： 3）
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         print(#function)
         guard let url = navigationResponse.response.url?.absoluteString else { return }
-        if url.hasPrefix("https") || url.hasPrefix("file") {
+        if url.hasPrefix("https") || url.hasPrefix("file") || url.hasPrefix("http") {
             decisionHandler(.allow)
         } else {
             decisionHandler(.cancel)

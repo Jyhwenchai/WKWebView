@@ -58,6 +58,7 @@ class ListenProgressWebViewController: UIViewController {
         self.progressObservation = webView.observe(\.estimatedProgress) { [weak self](webView,  change) in
             guard let self = self else { return }
             self.progressView.animate(with: webView.estimatedProgress)
+            print("progress... ", webView.estimatedProgress)
         }
     }
  
